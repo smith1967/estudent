@@ -13,10 +13,30 @@ try {
     $di = new Phalcon\DI\FactoryDefault();
 
     //Setup the view component
+//    $di->set('view', function() {
+//        $view = new \Phalcon\Mvc\View();
+//        $view->setViewsDir('../app/views/');
+//        return $view;
+//    });
+    //Registering Volt as template engine
     $di->set('view', function() {
         $view = new \Phalcon\Mvc\View();
         $view->setViewsDir('../app/views/');
+        $view->registerEngines(array(
+            ".volt" => 'Phalcon\Mvc\View\Engine\Volt'
+        ));
         return $view;
+    });
+    //Create a DI
+    //$di = new Phalcon\DI\FactoryDefault();
+    //Setup the database service
+    $di->set('db', function() {
+        return new \Phalcon\Db\Adapter\Pdo\Mysql(array(
+            "host" => "localhost",
+            "username" => "estudent",
+            "password" => "12345",
+            "dbname" => "estudent"
+        ));
     });
 
     //Setup a base URI so that all generated URIs include the "tutorial" folder
