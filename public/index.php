@@ -1,5 +1,4 @@
 <?php
-dddddd_msomkid
 try {
 
     //Register an autoloader
