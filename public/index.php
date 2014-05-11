@@ -11,12 +11,6 @@ try {
     //Create a DI
     $di = new Phalcon\DI\FactoryDefault();
 
-    //Setup the view component
-//    $di->set('view', function() {
-//        $view = new \Phalcon\Mvc\View();
-//        $view->setViewsDir('../app/views/');
-//        return $view;
-//    });
     //Registering Volt as template engine
     $di->set('view', function() {
         $view = new \Phalcon\Mvc\View();
